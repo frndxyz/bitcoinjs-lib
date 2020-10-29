@@ -22,7 +22,7 @@ import {
   Signer,
   SignerAsync,
 } from './ecpair';
-import { bitcoin as btcNetwork, Network } from './networks';
+import { wagerr as btcNetwork, Network } from './networks';
 import * as payments from './payments';
 import * as bscript from './script';
 import { Output, Transaction } from './transaction';
@@ -32,7 +32,7 @@ import { Output, Transaction } from './transaction';
  */
 const DEFAULT_OPTS: PsbtOpts = {
   /**
-   * A bitcoinjs Network object. This is only used if you pass an `address`
+   * A wagerrjs Network object. This is only used if you pass an `address`
    * parameter to addOutput. Otherwise it is not needed and can be left default.
    */
   network: btcNetwork,
@@ -66,7 +66,7 @@ const DEFAULT_OPTS: PsbtOpts = {
  *   and use something like a hardware wallet to sign with. (You must implement this)
  * Combiner: psbts can be combined easily with `psbt.combine(psbt2, psbt3, psbt4 ...)`
  *   the psbt calling combine will always have precedence when a conflict occurs.
- *   Combine checks if the internal bitcoin transaction is the same, so be sure that
+ *   Combine checks if the internal wagerr transaction is the same, so be sure that
  *   all sequences, version, locktime, etc. are the same before combining.
  * Input Finalizer: This role is fairly important. Not only does it need to construct
  *   the input scriptSigs and witnesses, but it SHOULD verify the signatures etc.
@@ -736,7 +736,7 @@ const transactionFromBuffer: TransactionFromBuffer = (
 
 /**
  * This class implements the Transaction interface from bip174 library.
- * It contains a bitcoinjs-lib Transaction object.
+ * It contains a wagerrjs-lib Transaction object.
  */
 class PsbtTransaction implements ITransaction {
   tx: Transaction;
